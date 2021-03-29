@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-2">
                     <button class="btn btn-success" v-on:click="showCheckout" v-if="cartItemCount > 0">{{cartItemCount}} Checkout</button>
-
+                    
                     <button class="btn btn-secondary disabled" disabled v-else>{{cartItemCount}} Checkout</button>
                 </div>
             </div>
@@ -97,7 +97,9 @@
                         <input v-model.number="order.phone" class="form-control">
                     </div>
                     <div class="form-group col-4">
-                        <button class="btn btn-success mt-4">Checkout</button>
+                        <button class="btn btn-primary" v-if="checkoutBtn">Checkout</button>
+                        
+                        <button class="btn btn-secondary" disabled v-else>Checkout</button>
                     </div>
                 </div>
             </form>
@@ -141,6 +143,14 @@
             computed: {
                 cartItemCount: function () {
                     return this.cart.length;
+                },
+                checkoutBtn() {
+                    if (this.order.fullname && this.order.phone) {
+                        return true
+                    }
+                    else {
+                        return false
+                    }
                 },
             }
         })
