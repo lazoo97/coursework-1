@@ -31,7 +31,7 @@
                                 <input v-model="sort" type="radio" name="Sort" value="price" v-on:click="sortedLessons('price', ord)"> Price
                             </label><br>
                             <label>
-                                <input v-model="sort" type="radio" name="Sort" value="subj" >Subject
+                                <input v-model="sort" type="radio" name="Sort" value="subj"> Subject
                             </label><br>
                             <label>
                                 <input v-model="sort" type="radio" name="Sort" value="loc"> Location
@@ -51,7 +51,7 @@
                             </label><br>
                         </fieldset>
                     </div>
-                    <div class="col-10">
+                    <div class="col-10 pl-0 pr-3">
                         <div class="row">
                             <div class="col-3 mb-3" v-for="lesson in sortedLessons(sort, ord)">
                                 <div class="card">
@@ -91,11 +91,14 @@
                     <ul class="list-group">
                         <li class="list-group-item" v-for="lesson in cart">
                             <div class="row">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <img v-bind:src="lesson.image" style="height: 25px;width: 25px;">
                                 </div>
-                                <div class="col-5">
+                                <div class="col-6">
                                     <p>{{lesson.subject}}</p>
+                                </div>
+                                <div class="col-2">
+                                    <span style="cursor: pointer;" class="text-danger" v-on:click="removeFromCart(lesson)" ><b>x</b></span>
                                 </div>
                             </div>
                         </li>
