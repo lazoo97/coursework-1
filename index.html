@@ -80,7 +80,7 @@
                     order: {
                             fullname: '',
                             phone: ''
-                        },
+                    },
                     productPage: true,
                 },
                 methods: {
@@ -99,6 +99,9 @@
                     canAddToCart: function (lesson) {
                         return lesson.availableInventory > this.cartCount(lesson.id);
                     },
+                    showCheckout() {
+                            this.shop = this.shop ? false : true;
+                        }
                 },
                 computed: {
                     cartItemCount: function () {
